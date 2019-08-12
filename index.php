@@ -47,7 +47,7 @@ include_once 'fungsi.php';
     <section class="content">
       <!-- Info boxes -->
       <!-- <div class="row"> -->
-        
+
         <?php
         
         $menu = ''; //variable untuk menampung menu
@@ -106,6 +106,58 @@ include_once 'fungsi.php';
 <script src="assets/dist/js/pages/dashboard2.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="assets/dist/js/demo.js"></script>
+<script src="js/vendor/jquery-1.11.0.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+        <script type="text/javascript" src="scripts/bootstrap/bootstrap.min.js"></script>
+
+
+        <!-- Preloader -->
+        <script type="text/javascript">
+            //<![CDATA[
+            $(window).load(function () { // makes sure the whole site is loaded
+                $('.loader-item').fadeOut(); // will first fade out the loading animation
+                $('#pageloader').fadeOut('fast'); // will fade out the white DIV that covers the website.
+                $('body').css({'overflow-y': 'visible'});
+            })
+            //]]>
+        </script>
+
+
+<!-- jQuery 2.1.4 -->
+    <!-- <script src="import/jQuery/jQuery-2.1.4.min.js"></script> -->
+        <!-- date-range-picker -->
+    <script src="import/daterangepicker/moment-cloud.min.js"></script>
+    <script src="import/daterangepicker/daterangepicker.js"></script>
+
+    <!-- Page script -->
+    <script>
+      $(function () {
+        //Date range picker
+        $('#reservation').daterangepicker(
+                {format: 'DD/MM/YYYY'}
+                );
+        $('#daterange-btn').daterangepicker(
+            {
+              ranges: {
+                'Today': [moment(), moment()],
+                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                'This Month': [moment().startOf('month'), moment().endOf('month')],
+                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+              },
+              startDate: moment().subtract(29, 'days'),
+              endDate: moment()
+            },
+        function (start, end) {
+          $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+        }
+        );
+
+      });
+    </script>
 </body>
 </html>
 
