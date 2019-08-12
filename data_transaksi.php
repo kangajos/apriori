@@ -8,6 +8,7 @@ include_once "database.php";
 include_once "fungsi.php";
 include_once "import/excel_reader2.php";
 ?>
+
 <section class="page_head">
     <div class="container">
         <div class="row">
@@ -55,6 +56,7 @@ if(isset($_POST['submit'])){
                     $table = "transaksi";
                     // $produkIn = get_produk_to_in($temp_produk);
                     $temp_date = format_date($value[1]);
+                    // echo $temp_date;die();
                     $produkIn = $value[2];
                     
                     //mencegah ada jarak spasi
@@ -107,12 +109,18 @@ if(isset($_POST['delete'])){
         <?php
 }
 
-$sql = "SELECT
-        *
-        FROM
-         transaksi";
-$query=$db_object->db_query($sql);
-$jumlah=$db_object->db_num_rows($query);
+
+if(isset($_GET['tambah_transaksi'])){
+    $tanggal = $_POST['tanggal'];
+    $nama_produk = $_POST['nama_produk'];
+    $produk_isi = null;
+    foreach ($nama_produk as $key => $value) {
+        $produk_isi .= $value.',';
+    }
+    $db_object->db_query("INSERT INTO transaksi SET transaction_date='$tanggal' , produk='$produk_isi'");
+    // echo $tanggal.'<br>'.$produk_isi;die(); ?>
+    <script> location.replace("?menu=data_transaksi&pesan_success=Data berhasil disimpan"); </script>
+   <?php }
 ?>
 
 <div class="super_sub_content">
@@ -135,7 +143,56 @@ $jumlah=$db_object->db_num_rows($query);
                     </button>
                 </div>
             </form>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+              Tambah Transaksi
+            </button>
+            <br>
 
+
+            <!-- modal input -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Tambah Transaksi</h4>
+      </div>
+     <form method="post" enctype="multipart/form-data" action="index.php?menu=data_transaksi&tambah_transaksi=yes">
+      <div class="modal-body">
+            <div class="form-group">
+                <div class="input-group">
+                    <label>Tanggal</label>
+                    <input name="tanggal" type="date" class="form-control">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="input-group">
+                    <label>Produk</label><br/>
+                    <?php
+                    $barang = "SELECT * FROM produk";
+                    $barang_result=$db_object->db_query($barang);
+                        while($baris=$db_object->db_fetch_array($barang_result)){
+                    ?>
+                    
+                    <div class="col-md-6">
+                    <input name="nama_produk[]" value="<?=$baris['nama_produk']?>" type="checkbox"><?=$baris['nama_produk']?>
+                    </div>
+                    <?php } ?>
+                </div>
+            </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" value="add_transaksi" class="btn btn-primary">Save changes</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+
+           
+        
             <?php
             if (!empty($pesan_error)) {
                 display_error($pesan_error);
@@ -144,8 +201,10 @@ $jumlah=$db_object->db_num_rows($query);
                 display_success($pesan_success);
             }
 
-
-            echo "Jumlah data: ".$jumlah."<br>";
+            $sql = "SELECT * FROM transaksi";
+                $query=$db_object->db_query($sql);
+                $jumlah=$db_object->db_num_rows($query);
+            echo "<BR><p>Jumlah data: ".$jumlah."</p><br>";
             if($jumlah==0){
                     echo "Data kosong...";
             }
@@ -158,6 +217,7 @@ $jumlah=$db_object->db_num_rows($query);
                 <th>Produk</th>
                 </tr>
                 <?php
+
                     $no=1;
                     while($row=$db_object->db_fetch_array($query)){
                         echo "<tr>";
@@ -176,6 +236,12 @@ $jumlah=$db_object->db_num_rows($query);
     </div>
 </div>
 
+
+
+
+
+
+
 <?php
 function get_produk_to_in($produk){
     $ex = explode(",", $produk);
@@ -193,3 +259,4 @@ function get_produk_to_in($produk){
 }
 
 ?>
+

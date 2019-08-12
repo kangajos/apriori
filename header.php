@@ -5,34 +5,91 @@ if(isset($_GET['menu'])){
 }
 
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>AdminLTE 2 | Simple Tables</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="assets/bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="assets/bower_components/Ionicons/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="assets/dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="assets/dist/css/skins/_all-skins.min.css">
 
-<header class="site-header container-fluid">
-            <div class="top-header">
-                <div class="logo col-md-12 col-sm-12">
-                    <h1><a href="index.php"><em>Apriori</em> Algoritma</a></h1>
-                    <span>PENERAPAN ALGORITMA APRIORI DALAM MENENTUKAN 
-                        POLA PEMBELIAN PRODUK BAYI YANG TERJUAL
-                         BERSAMA DI TOKO MAMIKO GKB</span>
-                </div> <!-- /.logo -->
-                
-            </div> <!-- /.top-header -->
-            <div class="main-header">
-                <div class="row">
-                    <div class="main-header-left col-md-3 col-sm-6 col-xs-8">
-                        <?php 
-                        if (!isset($_GET['menu']) || $_GET['menu']=='home' ) {
-                            //'', home
-                        ?>
-                        <a href="#" class="btn-left arrow-left fa fa-angle-left"></a>
-                        <a href="#" class="btn-left arrow-right fa fa-angle-right"></a>
-                        <?php 
-                        }
-                        ?>
-                    </div> <!-- /.main-header-left -->
-                    <div class="menu-wrapper col-md-9 col-sm-6 col-xs-4">
-                        <a href="#" class="toggle-menu visible-sm visible-xs"><i class="fa fa-bars"></i></a>
-                        <ul class="sf-menu hidden-xs hidden-sm">
-                            <li <?php echo ($menu==''||$menu=='home')?"class='active'":""; ?> ><a href="index.php">Home</a></li>
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!-- Google Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+  <header class="main-header">
+    <!-- Logo -->
+    <a href="../../index2.html" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>A</b>LT</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>Admin</b>LTE</span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+
+      <div class="navbar-custom-menu">
+        
+      </div>
+    </nav>
+  </header>
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- Sidebar user panel -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p>Alexander Pierce</p>
+          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        </div>
+      </div>
+      <!-- search form -->
+      <form action="#" method="get" class="sidebar-form">
+        <div class="input-group">
+          <input type="text" name="q" class="form-control" placeholder="Search...">
+              <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+              </span>
+        </div>
+      </form>
+      <!-- /.search form -->
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">MAIN NAVIGATION</li>
+        <li <?php echo ($menu==''||$menu=='home')?"class='active'":""; ?> ><a href="index.php">Home</a></li>
                         <?php
                         if (empty($_SESSION['apriori_toko_id'])) {
                         ?>
@@ -52,28 +109,7 @@ if(isset($_GET['menu'])){
                         <?php
                         }
                         ?>
-                        </ul>
-                    </div> <!-- /.menu-wrapper -->
-                </div> <!-- /.row -->
-            </div> <!-- /.main-header -->
-            <div id="responsive-menu">
-                <ul>
-                    <li class="active"><a href="index.php">Home</a></li>
-                    <?php
-                    if (empty($_SESSION['apriori_toko_id'])) {
-                    ?>
-                        <li><a href="login.php">Login</a></li>
-                    <?php 
-                    }
-                    else{
-                    ?>
-                        <li <?php echo ($menu=='data_transaksi')?"class='active'":""; ?>><a href="index.php?menu=data_transaksi">Data Transaksi</a></li>
-                        <li <?php echo ($menu=='proses_apriori')?"class='active'":""; ?>><a href="index.php?menu=proses_apriori">Proses Apriori</a></li>
-                        <li <?php echo ($menu=='hasil_rule')?"class='active'":""; ?>><a href="index.php?menu=hasil_rule">Hasil Rule</a></li>
-                        <li><a href="logout.php">Logout</a></li>
-                    <?php
-                    }
-                    ?>
-                </ul>
-            </div>
-        </header> <!-- /.site-header -->
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
