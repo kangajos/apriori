@@ -10,7 +10,7 @@ if (isset($_GET['menu'])) {
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Simple Tables</title>
+    <title>ADMIN</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -91,7 +91,7 @@ if (isset($_GET['menu'])) {
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">MAIN NAVIGATION</li>
                 <li <?php echo ($menu == '' || $menu == 'home') ? "class='active'" : ""; ?> ><a
-                            href="index.php">Home</a></li>
+                            href="index.php"><span class="fa fa-home"></span> Home</a></li>
                 <?php
                 if (empty($_SESSION['apriori_toko_id'])) {
                     ?>
@@ -100,6 +100,8 @@ if (isset($_GET['menu'])) {
                 } else {
                     if ($_SESSION['apriori_toko_level'] == 1) {
                         ?>
+                        <li <?php echo ($menu == 'data_transaksi') ? "class='active'" : ""; ?> ><a
+                                    href="index.php?menu=data_transaksi"><span class="fa fa-database"></span> Data Barang</a></li>
                         <li <?php echo ($menu == 'data_transaksi') ? "class='active'" : ""; ?> ><a
                                     href="index.php?menu=data_transaksi"><span class="fa fa-database"></span> Data Transaksi</a></li>
                         <li <?php echo ($menu == 'proses_apriori') ? "class='active'" : ""; ?>><a
