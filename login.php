@@ -55,7 +55,7 @@ include_once "fungsi.php";
         </section> <!-- /#pageloader -->
 
         <?php
-        include "header.php";
+//        include "header.php";
         ?>
 
         <div class="content-wrapper">

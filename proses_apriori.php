@@ -9,17 +9,17 @@ include_once "fungsi.php";
 include_once "mining.php";
 include_once "display_mining.php";
 ?>
-<section class="page_head">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-                <div class="page_title">
-                    <h2>Proses Apriori</h2>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<!--<section class="page_head">-->
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            <div class="col-lg-12 col-md-12 col-sm-12">-->
+<!--                <div class="page_title">-->
+<!--                    <h2>Proses Apriori</h2>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
 <?php
 //object database class
 $db_object = new database();
@@ -34,8 +34,8 @@ if (isset($_GET['pesan_success'])) {
 
 if (isset($_POST['submit'])) {
 ?>
-    <div class="super_sub_content">
-        <div class="container">
+<!--    <div class="super_sub_content">-->
+<!--        <div class="container">-->
             <div class="row">
                 <?php
                 $can_process = true;
@@ -227,9 +227,9 @@ else {
     $query = $db_object->db_query($sql);
     $jumlah = $db_object->db_num_rows($query);
     ?>
-
-    <div class="super_sub_content">
-        <div class="container">
+<!---->
+<!--    <div class="super_sub_content">-->
+<!--        <div class="container">-->
             <div class="row">
                 <form method="post" action="">
                     <div class="row">
@@ -299,8 +299,8 @@ else {
                 }
                 ?>
             </div>
-        </div>
-    </div>
+<!--        </div>-->
+<!--    </div>-->
     <?php
 }
 ?>

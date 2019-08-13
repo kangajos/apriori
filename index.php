@@ -11,45 +11,47 @@ if (!file_exists($menu . ".php")) {
 }
 
 if (!isset($_SESSION['apriori_toko_id']) &&
-        ($menu != '' & $menu != 'home' & $menu != 'tentang' & $menu != 'not_found' & $menu != 'forbidden')) {
+    ($menu != '' & $menu != 'home' & $menu != 'tentang' & $menu != 'not_found' & $menu != 'forbidden')) {
     header("location:login.php");
 }
 include_once 'fungsi.php';
 //include 'koneksi.php';
 ?>
 
-        <!--[if lt IE 7]>
-            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-        <![endif]-->
+<!--[if lt IE 7]>
+<p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser
+    today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better
+    experience this site.</p>
+<![endif]-->
 
 
-        <!-- <section id="pageloader">
-            <div class="loader-item fa fa-spin colored-border"></div>
-        </section> --> <!-- /#pageloader -->
+<!-- <section id="pageloader">
+    <div class="loader-item fa fa-spin colored-border"></div>
+</section> --> <!-- /#pageloader -->
 
-        <?php
-        include "header.php";
-        ?>
-          <div class="content-wrapper">
+<?php
+include "header.php";
+?>
+<div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-        Dashboard
-        <small>Version 2.0</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
-      </ol>
+        <h1>
+            Dashboard
+            <small>Version 2.0</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
-      <!-- Info boxes -->
-      <!-- <div class="row"> -->
+        <!-- Info boxes -->
+         <div class="container-fluid">
 
         <?php
-        
+
         $menu = ''; //variable untuk menampung menu
         if (isset($_GET['menu'])) {
             $menu = $_GET['menu'];
@@ -57,30 +59,30 @@ include_once 'fungsi.php';
 
 
         if ($menu != '') {
-            if(can_access_menu($menu)){
-                if (file_exists($menu.".php")) {
-                    include $menu.'.php';
+            if (can_access_menu($menu)) {
+                if (file_exists($menu . ".php")) {
+                    include $menu . '.php';
                 } else {
                     include "not_found.php";
                 }
-            }
-            else{
+            } else {
                 include "forbidden.php";
             }
         } else {
             include "home.php";
         }
         ?>
-    </div>
-</section>
-    <!-- </div> -->
-  <footer class="main-footer">
+         </div>
+        </div>
+    </section>
+</div>
+<footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 2.4.0
+        <b>Version</b> 2.4.0
     </div>
     <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
     reserved.
-  </footer>
+</footer>
 
 </div>
 <!-- ./wrapper -->
@@ -107,57 +109,57 @@ include_once 'fungsi.php';
 <!-- AdminLTE for demo purposes -->
 <script src="assets/dist/js/demo.js"></script>
 <script src="js/vendor/jquery-1.11.0.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
-        <script type="text/javascript" src="scripts/bootstrap/bootstrap.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
+<script src="js/plugins.js"></script>
+<script src="js/main.js"></script>
+<script type="text/javascript" src="scripts/bootstrap/bootstrap.min.js"></script>
 
 
-        <!-- Preloader -->
-        <script type="text/javascript">
-            //<![CDATA[
-            $(window).load(function () { // makes sure the whole site is loaded
-                $('.loader-item').fadeOut(); // will first fade out the loading animation
-                $('#pageloader').fadeOut('fast'); // will fade out the white DIV that covers the website.
-                $('body').css({'overflow-y': 'visible'});
-            })
-            //]]>
-        </script>
+<!-- Preloader -->
+<script type="text/javascript">
+    //<![CDATA[
+    $(window).load(function () { // makes sure the whole site is loaded
+        $('.loader-item').fadeOut(); // will first fade out the loading animation
+        $('#pageloader').fadeOut('fast'); // will fade out the white DIV that covers the website.
+        $('body').css({'overflow-y': 'visible'});
+    })
+    //]]>
+</script>
 
 
 <!-- jQuery 2.1.4 -->
-    <!-- <script src="import/jQuery/jQuery-2.1.4.min.js"></script> -->
-        <!-- date-range-picker -->
-    <script src="import/daterangepicker/moment-cloud.min.js"></script>
-    <script src="import/daterangepicker/daterangepicker.js"></script>
+<!-- <script src="import/jQuery/jQuery-2.1.4.min.js"></script> -->
+<!-- date-range-picker -->
+<script src="import/daterangepicker/moment-cloud.min.js"></script>
+<script src="import/daterangepicker/daterangepicker.js"></script>
 
-    <!-- Page script -->
-    <script>
-      $(function () {
+<!-- Page script -->
+<script>
+    $(function () {
         //Date range picker
         $('#reservation').daterangepicker(
-                {format: 'DD/MM/YYYY'}
-                );
+            {format: 'DD/MM/YYYY'}
+        );
         $('#daterange-btn').daterangepicker(
             {
-              ranges: {
-                'Today': [moment(), moment()],
-                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-                'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-                'This Month': [moment().startOf('month'), moment().endOf('month')],
-                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-              },
-              startDate: moment().subtract(29, 'days'),
-              endDate: moment()
+                ranges: {
+                    'Today': [moment(), moment()],
+                    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                    'This Month': [moment().startOf('month'), moment().endOf('month')],
+                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                },
+                startDate: moment().subtract(29, 'days'),
+                endDate: moment()
             },
-        function (start, end) {
-          $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-        }
+            function (start, end) {
+                $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+            }
         );
 
-      });
-    </script>
+    });
+</script>
 </body>
 </html>
 
