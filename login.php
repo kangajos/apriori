@@ -1,6 +1,10 @@
 <?php
 session_start();
-
+if(isset($_SESSION['status_login'])){
+//    if ($_SESSION['status_login'] == null){
+    header("location:index.php");
+//    }
+}
 if (isset($_SESSION['apriori_toko_id'])) {
     header("location:index.php");
 }
@@ -66,7 +70,7 @@ include_once "fungsi.php";
 <body class="hold-transition register-page">
 <div class="register-box">
     <div class="register-logo">
-        <a href="../../index2.html"><b>LOGIN</b>ADMIN</a>
+        <a href="/"><b>LOGIN</b>ADMIN</a>
     </div>
 
     <div class="register-box-body">

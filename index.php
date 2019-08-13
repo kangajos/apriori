@@ -1,6 +1,13 @@
 <?php
 error_reporting(1);
 session_start();
+if(!isset($_SESSION['status_login'])){
+//    if ($_SESSION['status_login'] == null){
+        header("location:login.php");
+//    }
+}
+//echo $_SESSION['status_login'];
+//die();
 $menu = '';
 if (isset($_GET['menu'])) {
     $menu = $_GET['menu'];

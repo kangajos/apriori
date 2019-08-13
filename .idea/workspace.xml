@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ecc299a9-d1a5-47f6-a098-7c6b6f1e1e78" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cek-login.php" beforeDir="false" afterPath="$PROJECT_DIR$/cek-login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/header.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
     </list>
@@ -53,7 +55,7 @@
       <updated>1565587643849</updated>
       <workItem from="1565587645654" duration="1616000" />
       <workItem from="1565637720280" duration="2453000" />
-      <workItem from="1565663103419" duration="922000" />
+      <workItem from="1565663103419" duration="1820000" />
     </task>
     <servers />
   </component>

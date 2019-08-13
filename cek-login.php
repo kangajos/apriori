@@ -21,6 +21,7 @@ if ($num_rows > 0) {
         $_SESSION['apriori_toko_id'] = $rows['id']; // mengisi session
         $_SESSION['apriori_toko_username'] = $rows['username'];
         $_SESSION['apriori_toko_level'] = $rows['level'];
+        $_SESSION['status_login'] = TRUE;
 
         $level_name = ($_SESSION['apriori_toko_level']==1)?"admin":"kepala";
         $_SESSION['apriori_toko_level_name'] = $level_name;

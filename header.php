@@ -101,15 +101,15 @@ if (isset($_GET['menu'])) {
                     if ($_SESSION['apriori_toko_level'] == 1) {
                         ?>
                         <li <?php echo ($menu == 'data_transaksi') ? "class='active'" : ""; ?> ><a
-                                    href="index.php?menu=data_transaksi">Data Transaksi</a></li>
+                                    href="index.php?menu=data_transaksi"><span class="fa fa-database"></span> Data Transaksi</a></li>
                         <li <?php echo ($menu == 'proses_apriori') ? "class='active'" : ""; ?>><a
-                                    href="index.php?menu=proses_apriori">Proses Apriori</a></li>
+                                    href="index.php?menu=proses_apriori"><span class="fa fa-refresh"></span> Proses Apriori</a></li>
                         <?php
                     }
                     ?>
                     <li <?php echo ($menu == 'hasil_rule') ? "class='active'" : ""; ?>><a
-                                href="index.php?menu=hasil_rule">Hasil Rule</a></li>
-                    <li><a href="logout.php">Logout</a></li>
+                                href="index.php?menu=hasil_rule"><span class="fa fa-check-circle"></span> Hasil Rule</a></li>
+                    <li><a href="logout.php" onclick="return confirm('Yakin ingin keluar ?')"><span class="fa fa-sign-out" ></span> Logout</a></li>
                     <?php
                 }
                 ?>
