@@ -32,81 +32,43 @@ if (isset($_GET['pesan_success'])) {
     $pesan_success = $_GET['pesan_success'];
 }
 
-if (isset($_POST['submit'])) {
-    // if(!$input_error){
-     $tanggal = $_POST['tanggal'];
-    $nama_produk = $_POST['nama_produk'];
-    $produk_isi = null;
-    foreach ($nama_produk as $key => $value) {
-        $produk_isi .= $value . ',';
-    }
-    $db_object->db_query("INSERT INTO produk     SET transaction_date='$tanggal' , produk='$produk_isi'");
-    // echo $tanggal.'<br>'.$produk_isi;die();
-     
-    }
-    ?>
-    <script> location.replace("?menu=produk&pesan_success=Data berhasil disimpan"); </script>
-    <?php
-}
 
-if (isset($_POST['delete'])) {
-    $sql = "TRUNCATE transaksi";
+
+if (isset($_GET['delete'])) {
+    $id_produk = $_GET['delete'];
+    $sql = "DELETE FROM produk WHERE id_produk='$id_produk'";
     $db_object->db_query($sql);
     ?>
-    <script> location.replace("?menu=produk&pesan_success=Data transaksi berhasil dihapus"); </script>
+    <script> alert('Data transaksi berhasil dihapus'); location.replace("?menu=produk"); </script>
     <?php
 }
 
 
-if (isset($_GET['tambah_transaksi'])) {
-    $tanggal = $_POST['tanggal'];
+if (isset($_GET['tambah_produk'])) {
+    $kode_produk = $_POST['kode_produk'];
     $nama_produk = $_POST['nama_produk'];
-    $produk_isi = null;
-    foreach ($nama_produk as $key => $value) {
-        $produk_isi .= $value . ',';
-    }
-    $db_object->db_query("INSERT INTO transaksi SET transaction_date='$tanggal' , produk='$produk_isi'");
+    $harga_beli = $_POST['harga_beli'];
+    $harga_jual = $_POST['harga_jual'];
+    $stok = $_POST['stok'];
+    $query = "INSERT INTO produk (id_produk,nama_produk,harga_beli,harga_jual,stok) VALUES ('$kode_produk','$nama_produk','$harga_beli','$harga_jual','$stok')";
+    $db_object->db_query($query);
     // echo $tanggal.'<br>'.$produk_isi;die();
     ?>
-    <script> location.replace("?menu=produk&pesan_success=Data berhasil disimpan"); </script>
-<?php }
-?>
+    <script> alert('Data berhasil disimpan'); location.replace("?menu=produk"); </script>
+<?php } ?>
 <!---->
 <!--<div class="super_sub_content">-->
 <!--    <div class="container">-->
         <div class="row">
             <!--UPLOAD EXCEL FORM-->
-            <div class="col-md-8">
-                <form method="post" enctype="multipart/form-data" action="">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <!--                                <label>Import data from excel</label>-->
-                                <input name="file_data_transaksi" type="file" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="from-grup"><input name="submit" type="submit" value="Upload Data"
-                                                          class="btn btn-success"></div>
-
-                        </div>
-                        <div class="col-md-3">
-                            <div class="from-group">
-                                <button name="delete" type="submit" class="btn btn-danger">
-                                    <i class="fa fa-trash-o"></i> Delete All Data Transaction
-                                </button>
-                            </div>
-
-                        </div>
-                    </div>
-
-                </form>
-            </div>
+            
             <div class="col-md-3">
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                    Tambah Transaksi
+                    Tambah Barang
                 </button>
+
             </div>
+            <br>
             <!--            <div class="col-3"></div>-->
             <!--            <div class="col-3"></div>-->
 
@@ -116,43 +78,49 @@ if (isset($_GET['tambah_transaksi'])) {
 
             <!-- modal input -->
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-dialog modal-sm" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                         aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel">Tambah Transaksi</h4>
+                            <h4 class="modal-title" id="myModalLabel">Tambah Barang</h4>
                         </div>
                         <form method="post" enctype="multipart/form-data"
-                              action="index.php?menu=data_transaksi&tambah_transaksi=yes">
+                              action="index.php?menu=produk&tambah_produk=yes">
                             <div class="modal-body">
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <label>Tanggal</label>
-                                        <input name="tanggal" type="date" class="form-control">
+                                        <label>Kode Barang</label>
+                                        <input name="kode_produk" type="text" class="form-control">
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <label>Nama Barang</label><br/>
-                                        <?php
-                                        $barang = "SELECT * FROM produk";
-                                        $barang_result = $db_object->db_query($barang);
-                                        while ($baris = $db_object->db_fetch_array($barang_result)) {
-                                            ?>
-
-                                            <div class="col-md-4">
-                                                <input name="nama_produk[]" value="<?= $baris['nama_produk'] ?>"
-                                                       type="checkbox"> <?= $baris['nama_produk'] ?>
-                                            </div>
-                                        <?php } ?>
+                                        <label>Nama Barang</label>
+                                        <input name="nama_produk" type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <label>Harga Beli</label>
+                                        <input name="harga_beli" type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <label>Harga Jual</label>
+                                        <input name="harga_jual" type="text" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <label>Stok</label>
+                                        <input name="stok" type="number" class="form-control">
                                     </div>
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="submit" value="add_transaksi" class="btn btn-primary">Save changes
-                                </button>
+                                <input type="submit" value="Simpan" class="btn btn-primary">
                             </div>
                         </form>
                     </div>
@@ -168,7 +136,7 @@ if (isset($_GET['tambah_transaksi'])) {
                 display_success($pesan_success);
             }
 
-            $sql = "SELECT * FROM transaksi";
+            $sql = "SELECT * FROM produk";
             $query = $db_object->db_query($sql);
             $jumlah = $db_object->db_num_rows($query);
             // echo "<BR><p>Jumlah data: " . $jumlah . "</p><br>";
@@ -177,11 +145,15 @@ if (isset($_GET['tambah_transaksi'])) {
             } else {
                 ?>
 <!--                <div class="table-responsive">-->
-                    <table class='table table-bordered table-striped  table-hover'>
+                    <table class='table table-bordered table-striped table-hover'>
                         <tr>
                             <th>No</th>
-                            <th>Tanggal</th>
-                            <th>Produk</th>
+                            <th>Kode Barang</th>
+                            <th>Nama Barang</th>
+                            <th>Harga beli</th>
+                            <th>Harga Jual</th>
+                            <th>Stok</th>
+                            <th></th>
                         </tr>
                         <?php
 
@@ -189,8 +161,13 @@ if (isset($_GET['tambah_transaksi'])) {
                         while ($row = $db_object->db_fetch_array($query)) {
                             echo "<tr>";
                             echo "<td>" . $no . "</td>";
-                            echo "<td>" . $row['transaction_date'] . "</td>";
-                            echo "<td>" . $row['produk'] . "</td>";
+                            echo "<td>" . $row['id_produk'] . "</td>";
+                            echo "<td>" . $row['nama_produk'] . "</td>";
+                            echo "<td>" . $row['harga_beli'] . "</td>";
+                            echo "<td>" . $row['harga_jual'] . "</td>";
+                            echo "<td>" . $row['stok'] . "</td>";
+                            echo '<td><a class = "btn btn-danger btn-block" href="index.php?menu=produk&delete='.$row['id_produk'].'">Hapus</a>';
+                            echo '<a class = "btn btn-warning btn-block" href="index.php?menu=editproduk&id='.$row['id_produk'].'">Edit</a></td>';
                             echo "</tr>";
                             $no++;
                         }

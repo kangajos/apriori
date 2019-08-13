@@ -108,7 +108,13 @@ if (isset($_POST['delete'])) {
     <script> location.replace("?menu=data_transaksi&pesan_success=Data transaksi berhasil dihapus"); </script>
     <?php
 }
+if (isset($_GET['delete'])) {
 
+    $id = $_GET['delete'];
+    $db_object->db_query("DELETE FROM transaksi WHERE id='$id'");
+    ?>
+    <script> location.replace("?menu=data_transaksi&pesan_success=Data berhasil disimpan"); </script>
+<?php }
 
 if (isset($_GET['tambah_transaksi'])) {
     $tanggal = $_POST['tanggal'];
@@ -138,14 +144,13 @@ if (isset($_GET['tambah_transaksi'])) {
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="from-grup"><input name="submit" type="submit" value="Upload Data"
-                                                          class="btn btn-success"></div>
+                            <div class="from-grup"><input name="submit" type="submit" value="Upload Data" class="btn btn-success"></div>
 
                         </div>
                         <div class="col-md-3">
                             <div class="from-group">
                                 <button name="delete" type="submit" class="btn btn-danger">
-                                    <i class="fa fa-trash-o"></i> Delete All Data Transaction
+                                    <i class="fa fa-trash-o"></i> Hapus Semua Transaksi
                                 </button>
                             </div>
 
@@ -234,20 +239,24 @@ if (isset($_GET['tambah_transaksi'])) {
                             <th>No</th>
                             <th>Tanggal</th>
                             <th>Produk</th>
+                            <th></th>
                         </tr>
                         <?php
 
                         $no = 1;
+                        $return = "return confirm(\"Anda yakin ?\")";
                         while ($row = $db_object->db_fetch_array($query)) {
                             echo "<tr>";
                             echo "<td>" . $no . "</td>";
                             echo "<td>" . $row['transaction_date'] . "</td>";
                             echo "<td>" . $row['produk'] . "</td>";
+                            echo "<td> <a onclick='return confirm(\"sure to delete !\");' class='btn btn-block btn-danger' href='index.php?menu=data_transaksi&delete=".$row['id']."'>Hapus</a></td>";
                             echo "</tr>";
                             $no++;
                         }
                         ?>
                     </table>
+                    <!-- <a href="" onclick="">ok</a> -->
 <!--                </div>-->
                 <?php
             }
