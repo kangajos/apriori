@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ecc299a9-d1a5-47f6-a098-7c6b6f1e1e78" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_transaksi.php" beforeDir="false" afterPath="$PROJECT_DIR$/data_transaksi.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hasil_rule.php" beforeDir="false" afterPath="$PROJECT_DIR$/hasil_rule.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/header.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proses_apriori.php" beforeDir="false" afterPath="$PROJECT_DIR$/proses_apriori.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template.php" beforeDir="false" afterPath="$PROJECT_DIR$/template.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view_rule.php" beforeDir="false" afterPath="$PROJECT_DIR$/view_rule.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -60,7 +53,7 @@
       <updated>1565587643849</updated>
       <workItem from="1565587645654" duration="1616000" />
       <workItem from="1565637720280" duration="2453000" />
-      <workItem from="1565663103419" duration="136000" />
+      <workItem from="1565663103419" duration="922000" />
     </task>
     <servers />
   </component>
