@@ -118,8 +118,8 @@ function mining_process($db_object, $min_support, $min_confidence, $start_date, 
 
 
     //build itemset 1
-    echo "<br><strong>Itemset 1:</strong><br>";
-    echo "<table class='table table-bordered table-striped  table-hover'>
+    // echo "<br><strong>Itemset 1:</strong><br>";
+    echo "<table  style='display:none;' style='display:none;' class='table table-bordered table-striped  table-hover'>
             <tr>
                 <th>No</th>
                 <th>Item</th>
@@ -156,8 +156,8 @@ function mining_process($db_object, $min_support, $min_confidence, $start_date, 
     $db_object->db_query($sql_insert_itemset1);
 
     //display itemset yg lolos
-    echo "<br><strong>Itemset 1 yang lolos:</strong><br>";
-    echo "<table class='table table-bordered table-striped  table-hover'>
+    // echo "<br><strong>Itemset 1 yang lolos:</strong><br>";
+    echo "<table  style='display:none;' style='display:none;' class='table table-bordered table-striped  table-hover'>
             <tr>
                 <th>No</th>
                 <th>Item</th>
@@ -178,8 +178,8 @@ function mining_process($db_object, $min_support, $min_confidence, $start_date, 
 
 
     //build itemset2
-    echo "<br><strong>Itemset 2:</strong><br>";
-    echo "<table class='table table-bordered table-striped  table-hover'>
+    // echo "<br><strong>Itemset 2:</strong><br>";
+    echo "<table  style='display:none;' class='table table-bordered table-striped  table-hover'>
             <tr>
                 <th>No</th>
                 <th>Item1</th>
@@ -240,8 +240,8 @@ function mining_process($db_object, $min_support, $min_confidence, $start_date, 
     $db_object->db_query($sql_insert_itemset2);
 
     //display itemset yg lolos
-    echo "<br><strong>Itemset 2 yang lolos:</strong><br>";
-    echo "<table class='table table-bordered table-striped  table-hover'>
+    // echo "<br><strong>Itemset 2 yang lolos:</strong><br>";
+    echo "<table  style='display:none;' class='table table-bordered table-striped  table-hover'>
             <tr>
                 <th>No</th>
                 <th>Item 1</th>
@@ -263,8 +263,8 @@ function mining_process($db_object, $min_support, $min_confidence, $start_date, 
     echo "</table>";
 
     //build itemset3
-    echo "<br><strong>Itemset 3:</strong><br>";
-    echo "<table class='table table-bordered table-striped  table-hover'>
+    // echo "<br><strong>Itemset 3:</strong><br>";
+    echo "<table  style='display:none;' class='table table-bordered table-striped  table-hover'>
             <tr>
                 <th>No</th>
                 <th>Item1</th>
@@ -356,8 +356,8 @@ function mining_process($db_object, $min_support, $min_confidence, $start_date, 
     $db_object->db_query($sql_insert_itemset3);
 
     //display itemset yg lolos
-    echo "<br><strong>Itemset 3 yang lolos:</strong><br>";
-    echo "<table class='table table-bordered table-striped  table-hover'>
+    // echo "<br><strong>Itemset 3 yang lolos:</strong><br>";
+    echo "<table  style='display:none;' class='table table-bordered table-striped  table-hover'>
             <tr>
                 <th>No</th>
                 <th>Item 1</th>

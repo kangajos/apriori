@@ -100,8 +100,8 @@ if (isset($_GET['menu'])) {
                 } else {
                     if ($_SESSION['apriori_toko_level'] == 1) {
                         ?>
-                        <li <?php echo ($menu == 'data_transaksi') ? "class='active'" : ""; ?> ><a
-                                    href="index.php?menu=data_transaksi"><span class="fa fa-database"></span> Data Barang</a></li>
+                        <li <?php echo ($menu == 'produk') ? "class='active'" : ""; ?> ><a
+                                    href="index.php?menu=produk"><span class="fa fa-database"></span> Data Barang</a></li>
                         <li <?php echo ($menu == 'data_transaksi') ? "class='active'" : ""; ?> ><a
                                     href="index.php?menu=data_transaksi"><span class="fa fa-database"></span> Data Transaksi</a></li>
                         <li <?php echo ($menu == 'proses_apriori') ? "class='active'" : ""; ?>><a

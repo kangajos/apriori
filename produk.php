@@ -153,6 +153,7 @@ if (isset($_GET['tambah_produk'])) {
                             <th>Harga beli</th>
                             <th>Harga Jual</th>
                             <th>Stok</th>
+                            <th>Berkaitan</th>
                             <th></th>
                         </tr>
                         <?php
@@ -166,6 +167,18 @@ if (isset($_GET['tambah_produk'])) {
                             echo "<td>" . $row['harga_beli'] . "</td>";
                             echo "<td>" . $row['harga_jual'] . "</td>";
                             echo "<td>" . $row['stok'] . "</td>";
+                            $nama_barang = $row['nama_produk'];
+                            echo "<td>";
+                            $kuking = "SELECT max(confidence) AS konfiden, kombinasi2 FROM `confidence` WHERE kombinasi2 LIKE '$nama_barang' OR kombinasi1 LIKE '$nama_barang'";
+                            $query_cuy = $db_object->db_query($kuking);
+                            // $kombo = $db_object->db_num_rows($query_cuy);
+                            while ($baris = $db_object->db_fetch_array($query_cuy)) { 
+                                if (!empty($baris['kombinasi2'])) {
+                                    # code...
+                                    echo $baris['kombinasi2'].'<br/>'.$baris['konfiden'].'%';
+                                    }
+                                 }
+                            echo "</td>";
                             echo '<td><a class = "btn btn-danger btn-block" href="index.php?menu=produk&delete='.$row['id_produk'].'">Hapus</a>';
                             echo '<a class = "btn btn-warning btn-block" href="index.php?menu=editproduk&id='.$row['id_produk'].'">Edit</a></td>';
                             echo "</tr>";
