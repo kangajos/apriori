@@ -169,13 +169,13 @@ if (isset($_GET['tambah_produk'])) {
                             echo "<td>" . $row['stok'] . "</td>";
                             $nama_barang = $row['nama_produk'];
                             echo "<td>";
-                            $kuking = "SELECT max(confidence) AS konfiden, kombinasi2 FROM `confidence` WHERE kombinasi2 LIKE '$nama_barang' OR kombinasi1 LIKE '$nama_barang'";
+                            $kuking = "SELECT max(confidence) AS konfiden, kombinasi1, kombinasi2 FROM `confidence` WHERE kombinasi2 LIKE '$nama_barang' OR kombinasi1 LIKE '$nama_barang'";
                             $query_cuy = $db_object->db_query($kuking);
                             // $kombo = $db_object->db_num_rows($query_cuy);
                             while ($baris = $db_object->db_fetch_array($query_cuy)) { 
-                                if (!empty($baris['kombinasi2'])) {
+                                if (!empty($baris['kombinasi1'])) {
                                     # code...
-                                    echo $baris['kombinasi2'].'<br/>'.$baris['konfiden'].'%';
+                                    echo $baris['kombinasi1'].'<br/>'.$baris['konfiden'].'%';
                                     }
                                  }
                             echo "</td>";
